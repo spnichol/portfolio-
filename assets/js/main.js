@@ -28,13 +28,13 @@ jQuery(document).ready(function($) {
     $("#rss-feeds").rss(
     
         //Change this to your own rss feeds
-        "http://feeds.feedburner.com/TechCrunch/startups",
+        "http://www.medium.com/feed/@spnichol",
         
         {
         // how many entries do you want?
         // default: 4
         // valid values: any integer
-        limit: 3,
+        limit: 7,
         
         // the effect, which is used to let the entries appear
         // default: 'show'
@@ -55,29 +55,51 @@ jQuery(document).ready(function($) {
     );
     
     /* Github Calendar - https://github.com/IonicaBizau/github-calendar */
-    GitHubCalendar("#github-graph", "IonicaBizau");
+    GitHubCalendar("#github-graph", "spnichol");
     
     
     /* Github Activity Feed - https://github.com/caseyscarborough/github-activity */
-    GitHubActivity.feed({ username: "caseyscarborough", selector: "#ghfeed" });
+    GitHubActivity.feed({ username: "spnichol", selector: "#ghfeed" });
 
 
 });
 
-var slideIndex = 1;
-showDivs(slideIndex);
+// var slideIndex = 1;
+// showDivs(slideIndex);
 
-function plusDivs(n) {
-    showDivs(slideIndex += n);
-}
+// function plusDivs(n) {
+//     showDivs(slideIndex += n);
+// }
 
-function showDivs(n) {
+// function showDivs(n) {
+//     var i;
+//     var x = document.getElementsByClassName("mySlides");
+//     if (n > x.length) {slideIndex = 1} 
+//     if (n < 1) {slideIndex = x.length} ;
+//     for (i = 0; i < x.length; i++) {
+//         x[i].style.display = "none"; 
+//     }
+//     x[slideIndex-1].style.display = "block"; 
+
+
+
+
+function carousel() {
     var i;
     var x = document.getElementsByClassName("mySlides");
-    if (n > x.length) {slideIndex = 1} 
-    if (n < 1) {slideIndex = x.length} ;
     for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none"; 
+      x[i].style.display = "none"; 
     }
+    slideIndex++;
+    if (slideIndex > x.length) {slideIndex = 1} 
     x[slideIndex-1].style.display = "block"; 
+    setTimeout(carousel, 5000); // Change image every 2 seconds
 }
+var slideIndex = 0;
+carousel();
+
+$(document).ready(function(){
+    $(".push_menu").click(function(){
+         $(".wrapper").toggleClass("active");
+    });
+});

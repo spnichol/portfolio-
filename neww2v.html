@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>Responsive Portfolio Template for Developers</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Responsive HTML5 Website Landing Page for Developers">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <!-- github calendar css -->
+    <link rel="stylesheet" href="assets/plugins/github-calendar/dist/github-calendar.css"
+/>
+    <!-- github acitivity css -->
+    <link rel="stylesheet" href="assets/plugins/github-activity/src/github-activity.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
+    
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        <![endif]-->
+        <script src="http://d3js.org/d3.v2.min.js?2.9.3"></script>
+        <script src="https://d3js.org/d3-color.v1.min.js"></script>
+        <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+    <style>
+
+.coolsvg {
+  width: 100%;
+  background-size: cover;
+  height: 0;
+  padding: 0; /* reset */
+  padding-bottom: 92%;
+  background-color: none;
+}
+.link {
+  stroke: yellow;
+  stroke-width: 5px;
+}
+
+.node text {
+cursos:pointer;
+
+}
+
+.node circle{
+stroke:#fff;
+stroke-width:3px;
+fill:#555;
+}
+</style>
+
+</head> 
+
+<body>
+    <!-- ******HEADER****** --> 
+    <header class="header">
+        <div class="container">                       
+            <img class="profile-image img-responsive pull-left" src="assets/images/profcirc.gif" alt="Pres Nichols" style="max-height: 200px;"/>
+            <div class="profile-content pull-left">
+                <h1 class="name">Pres Nichols</h1>
+                <h2 class="desc">Data Nerd/Writer</h2>   
+                <ul class="social list-inline">
+                    <li><a href="https://www.linkedin.com/in/stevennicholsjr/"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="https://www.github.com/spnichol"><i class="fa fa-github-alt"></i></a></li>                  
+                    <li class="last-item"><a href="https://medium.com/@spnichol"><i class="fa fa-medium"></i></a></li>                 
+                </ul> 
+            </div><!--//profile-->
+            <a class="btn btn-cta-primary pull-right" href="mailto:spn259@nyu.edu" target="_blank"><i class="fa fa-paper-plane"></i> Contact Me</a>              
+        </div><!--//container-->
+    </header><!--//header-->
+    
+    <div class="container sections-wrapper">
+        <div class="row">
+            <div class="primary col-md-8 col-sm-12 col-xs-12">
+                <section class="about section">
+                    <div class="section-inner">
+                       <div class="content">
+                                                    <div class="item featured text-center">
+                                <h3 class="title" style="margin-bottom: 10px; font-weight: 100;">I trained a Word2Vec model on FoxNews broadcasts</a></h3>
+                                <h4 class="summary" style="color: #545e69; margin-bottom: 60px; font-weight: 100;">This is what it thinks about the world.</h4>
+                             <div class="featured-image center-block">
+                             <div id="mysvg" class="coolsvg">
+                                            </div>
+                                            </div>
+                                    <script>
+var width = 960
+    height = 500
+
+d3.select("#chart").attr("align","center");
+
+var svg = d3.select("#mysvg").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var force = d3.layout.force()
+    .gravity(.06)
+    .distance(70)
+    .charge(-220)
+    .size([width, height]);
+
+
+
+d3.json("graphFile.json", function(json) {
+  force
+      .nodes(json.nodes)
+      .links(json.links)
+      .start();
+  var link = svg.selectAll(".link")
+      .data(json.links)
+    .enter().append("line")
+      .attr("class", "link")
+    .style("stroke-width", function(d) { return Math.sqrt(d.weight); })
+    .style("stroke", function(d) { return d3.interpolateBlues(d.small_weight)})
+
+
+
+
+  var node = svg.selectAll(".node")
+      .data(json.nodes)
+    .enter().append("g")
+      .attr("class", "node")
+      .call(force.drag);
+  var term_list = ["obama", "flynn", "abortion", "trump"]
+
+  node.append("circle")
+      .attr("r", function(d) {if(term_list.indexOf(d.name) > -1) {return 25} else {return 6}});
+
+  node.append("text")
+      .attr("dx", function(d) {if(term_list.indexOf(d.name) > -1) {return -20} else {return 12}})
+
+      .attr("dy", 0)
+      .text(function(d) { return d.name })
+      .style("font-size", function(d) {if(term_list.indexOf(d.name) > -1) {return 13} else {return 12}})
+      .style("font-weight", function(d) {if(term_list.indexOf(d.name) > -1) {return 900} else {return 400}})
+      .style("text-decoration", function(d) {if(term_list.indexOf(d.name) > -1) {return "underline"} else {return "none"}})
+
+
+
+  force.on("tick", function() {
+    link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+  });
+});
+
+</script>
+      </svg>
+
+                                    <p style="margin-top:50px;">Word2Vec model trained on around 1,200 Fox News broadcasts. Each central node is a keyword, with the smaller nodes representing the most-releated terms and their cosine distance."</p>
+
+                         
+                        </div><!--//content-->
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+    
+        
+               
+                <section class="experience section">
+                    <div class="section-inner">
+                        <h2 class="heading">Work Experience</h2>
+                        <div class="content">
+                            <div class="item">
+                                <h3 class="title">Intern - Data, Strategy & Innovation - <span class="place"><a href="#">Brooklyn Public Library</a></span> <span class="year">(2017 - Present)</span></h3>
+                                <p>I use data analytics to help inform the library's five-year strategic plan. I work heavily in R, ArcGIS and Tableau to create custom maps with both internal and external data sources. Currently, my analysis (and mine alone) is being used to pick the location of a new, multi-million dollar branch.</p>
+                            </div><!--//item-->
+                            <div class="item">
+                                <h3 class="title">Content Editor - <span class="place"><a href="#">Booking.com</a></span> <span class="year">(2013 - 2014)</span></h3>
+                                <p>I was responsible for curating content for hotel profiles and landing pages for the Andean region of South America. I also designed and implemented best-practices workshops for high-priority partners, in addition to training a permanent content team to staff the Colombia office.</p>
+                            </div><!--//item-->
+                            
+                            <div class="item">
+                                <h3 class="title">Journalist - <span class="place"><a href="#">The News Mexico</a></span> <span class="year">(2012 - 2014)</span></h3>
+                                <p>As the cultural reporter, I was in charge of producing 5-7 full-length articles on topics such as art, culture, science and travel. I spent the last year at The News working as the editor of the Mexican Politics section.</p>
+                            </div><!--//item-->
+                            
+                        </div><!--//content-->  
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+            </div><!--//primary-->
+            <div class="secondary col-md-4 col-sm-12 col-xs-12">
+                 <aside class="info aside section">
+                    <div class="section-inner">
+                        <h2 class="heading sr-only">Basic Information</h2>
+                        <div class="content">
+                            <ul class="list-unstyled">
+                                <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>Brooklyn, US</li>
+                                <li><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#">spn259@nyu.edu</a></li>
+                            </ul>
+                        </div><!--//content-->  
+                    </div><!--//section-inner-->                 
+                </aside><!--//aside-->
+                
+                
+                
+                <aside class="blog aside section">
+                    <div class="section-inner">
+                        <h2 class="heading">Latest Blog Posts</h2>
+                        <div id="rss-feeds" class="content">
+
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </aside><!--//section-->
+                               
+           
+            </div><!--//secondary-->    
+        </div><!--//row-->
+    </div><!--//masonry-->
+    
+    <!-- ******FOOTER****** --> 
+    <footer class="footer">
+        <div class="container text-center">
+                <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can check out other license options via our website: themes.3rdwavemedia.com */-->
+                <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+ 
+    <!-- Javascript -->          
+    <script type="text/javascript" src="assets/plugins/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>    
+    <script type="text/javascript" src="assets/plugins/jquery-rss/dist/jquery.rss.min.js"></script> 
+    <!-- github calendar plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/3.0.2/es6-promise.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fetch/0.10.1/fetch.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/github-calendar/dist/github-calendar.min.js"></script>
+    <!-- github activity plugin -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/github-activity/src/github-activity.js"></script>
+    <!-- custom js -->
+    <script type="text/javascript" src="assets/js/main.js"></script>            
+</body>
+</html> 
+

@@ -62,24 +62,48 @@
                         <div class="content">    
                                                
                             <div class="item featured text-center">
-                                <h3 class="title"><a href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-for-products-velocity/" target="_blank">KickStarter - Velocity</a></h3>
-                                <p class="summary">A responsive Bootstrap template designed for digital products</p>
+                                <h3 class="title"><a href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-for-products-velocity/" target="_blank">Libraries need maps, too.</a></h3>
+                                <p class="summary">A run-through of my cartographic swag while working at Brooklyn Public Library</p>
                              <div class="featured-image center-block">
-                                                   
-                                    <a href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-for-products-velocity/" target="_blank" class="center-block">
-                                    <img class="img-responsive project-image mySlides center-block" style="max-height: 600px;" src="assets/images/projects/project-featured.png" alt="project name" />
-                                    </a>
-                                    <img class="img-responsive project-image mySlides center-block" style="max-height: 600px;" src="assets/images/projects/popdensity.png">
-                                    <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-                                    <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+                                    <figure class=mySlides>
+                                    <img class="img-responsive project-image center-block" style="max-height: 600px; margin-bottom:-10px" src="assets/images/projects/maps/popdensity.png">
+                                    <figcaption><strong>A map showing population density based off 2015 American Community Survey data.</strong></figcaption>
+                                    </figure>
+                                    <figure class=mySlides>
+                                    <img class="img-responsive project-image center-block" style="max-height: 600px;margin-bottom:-10px" src="assets/images/projects/maps/bushlinks.png">
 
-                                    <figcaption>Fig1. - A view of the pulpit rock in Norway.</figcaption>
+                                    <figcaption><strong>What other branches do patrons of the Bushwick branch visit?</strong></figcaption>
+                                    </figure>
+                                    <figure class=mySlides>
+                                    <img class="img-responsive project-image center-block" style="max-height: 600px;margin-bottom:-5px" src="assets/images/projects/maps/spatial1.PNG">
+                                    <figcaption><strong>Which patrons live within a half-mile of the closest library?</strong></figcaption>
+                                    </figure>
+                                    <figure class=mySlides>
+
+                                    <img class="img-responsive project-image center-block" style="max-height: 600px;margin-bottom:-10px " src="assets/images/projects/maps/spatial_dash.PNG">
+
+                                    <figcaption><strong>A one-stop-shop spatial dashboard I created with Tableau.</strong>
+                                    </figcaption>
+                                    </figure>
+<!--                                     <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                                    <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+ -->
 
                                     </div>
 
-                                <div class="desc text-left">                                    
-                                    <p>You can promote your main project here. Suspendisse in tellus dolor. Vivamus a tortor eu turpis pharetra consequat quis non metus. Aliquam aliquam, orci eu suscipit pellentesque, mauris dui tincidunt enim, eget iaculis ante dolor non turpis.</p>
-                                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. At vero eos et accusamus et iusto odio dignissimos ducimus.</p>
+                                <div class="desc">                                    
+                                    <p style="margin-left:40px;">Maps are great. They really are. I'm honestly a strange candidate to dabble in cartography. Unlike most men, I'm more than happy to admit that I have the <i>worst</i> senese of direction out of anyone I know. Thanks, dad! Nevertheless, working at Brooklyn Public Library was an awesome opportunity to learn about the wonderful word of map making.</p>
+                                    <br>
+                                    <p>When I started at BPL, things in the cartography department (figuretively speaking) were a bit disorganized. The only resource that was actively being used was Tableau ... yikes. Don't get me wrong, Tableau has some pretty cool features and can be a powerful tool for on-the-fly data visualization, but it can be a real pain for some mapping tasks. No shape files? Laaaaammmmeeeee.</p>
+                                    <br>
+                                    <p>Luckily, the consultant that mapped out the service areas for each branch left some .shp files laying around. From then on, it was pure cartographic bliss. The maps I made for my internship were for two main projects. The first was the formation of the new five-year strategic plan. While I won't get into details, the crux of the plan revolved around creating "networks" of branches that shared characteristics in terms of geography, demographics and usage patterns. On my part, this involved a lot of work with the American Community Survey, looking at trends in cost of living, demographics and digital access ... and then putting it on a map. </p>
+                                    <br>
+                                    <p>The other main project I worked on was helping determine the location of a new branch. The instructions were essentially, "We have a bunch of money. Where should we build a new branch?". Music to my ears. To answer this question, I relied heavily on patron-level data. I first re-geocoded about 350k shoddily geocoded patrons and then used R to calculate each patrons distance from the closest branch (the really beautiful map). This provided a great starting point, but as-the-crow-flies (Haversine) distance is only so meaningful. To take things to the next level, a colleague and I (although mainly her) used the network analyst tool in ArcGIS to create 1/2 and 3/4-mile walking-distance radii around each branch. With these polygons in hand, I did some nifty geometric overlays in R to find which patrons fell within and outside the radii. </p>
+                                    <br>
+                                    <p>To top it off, I did some experiments with Census block groups to see if I could come up with some potential service areas. Block groups are the smallest geographic unit used by the Census Bureau - there are like 2,500 of them in Brooklyn. I calculated the percentage of the population in each block group living outside the 1/2 mile radius, threw the data in a k-means clustering algorithm and iterated over it a gazillion times to find the sets of contiguous block groups that maximized the number of residents living outside the walking-distance radii.</p>
+                                    <p>
+                                    It turns out that only about 5% of the population in Brookyln lives farther from three-quarters of a mile from the closest library branch. So, what's your excuse?</p>
+
                                 </div><!--//desc-->         
                                 <a class="btn btn-cta-secondary" href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-for-products-velocity/" target="_blank"><i class="fa fa-thumbs-o-up"></i> Back my project</a>                 
                             </div><!--//item-->
@@ -157,155 +181,6 @@
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
                 
-                <section class="experience section">
-                    <div class="section-inner">
-                        <h2 class="heading">Work Experience</h2>
-                        <div class="content">
-                            <div class="item">
-                                <h3 class="title">Intern - Data, Strategy & Innovation - <span class="place"><a href="#">Brooklyn Public Library</a></span> <span class="year">(2017 - Present)</span></h3>
-                                <p>I use data analytics to help inform the library's five-year strategic plan. I work heavily in R, ArcGIS and Tableau to create custom maps with both internal and external data sources. Currently, my analysis (and mine alone) is being used to pick the location of a new, multi-million dollar branch.</p>
-                            </div><!--//item-->
-                            <div class="item">
-                                <h3 class="title">Content Editor - <span class="place"><a href="#">Booking.com</a></span> <span class="year">(2013 - 2014)</span></h3>
-                                <p>I was responsible for curating content for hotel profiles and landing pages for the Andean region of South America. I also designed and implemented best-practices workshops for high-priority partners, in addition to training a permanent content team to staff the Colombia office.</p>
-                            </div><!--//item-->
-                            
-                            <div class="item">
-                                <h3 class="title">Journalist - <span class="place"><a href="#">The News Mexico</a></span> <span class="year">(2012 - 2014)</span></h3>
-                                <p>As the cultural reporter, I was in charge of producing 5-7 full-length articles on topics such as art, culture, science and travel. I spent the last year at The News working as the editor of the Mexican Politics section.</p>
-                            </div><!--//item-->
-                            
-                        </div><!--//content-->  
-                    </div><!--//section-inner-->                 
-                </section><!--//section-->
-                <section class="github section">
-                    <div class="section-inner">
-                        <h2 class="heading">My GitHub</h2>
-                        <p>You can embed your GitHub contribution graph calendar using IonicaBizau's <a href="https://github.com/IonicaBizau/github-calendar" target="_blank">GitHub Calendar</a> widget. 
-                        
-                        <div id="github-graph" class="github-graph">
-
-                        </div><!--//github-graph-->
-
-                        <p>You can also embed your GitHub activities using Casey Scarborough's <a href="http://caseyscarborough.com/projects/github-activity/" target="_blank">GitHub Activity Stream</a> widget.        
-                        <!--//Usage: http://caseyscarborough.com/projects/github-activity/ -->                       
-                        <div id="ghfeed" class="ghfeed">
-                        </div><!--//ghfeed-->
-                        
-                    </div><!--//secton-inner-->
-                </section><!--//section-->
-            </div><!--//primary-->
-            <div class="secondary col-md-4 col-sm-12 col-xs-12">
-                 <aside class="info aside section">
-                    <div class="section-inner">
-                        <h2 class="heading sr-only">Basic Information</h2>
-                        <div class="content">
-                            <ul class="list-unstyled">
-                                <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>Brooklyn, US</li>
-                                <li><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#">spn259@nyu.edu</a></li>
-                            </ul>
-                        </div><!--//content-->  
-                    </div><!--//section-inner-->                 
-                </aside><!--//aside-->
-                
-                <aside class="skills aside section">
-                    <div class="section-inner">
-                        <h2 class="heading">Skills</h2>
-                        <div class="content">
-                            <p class="intro">
-                                Intro about your skills goes here. Keep the list lean and only show your primary skillset. You can always provide a link to your Linkedin or Coderwall profile so people can get more info there.</p>
-                            
-                            <div class="skillset">
-                               
-                                <div class="item">
-                                    <h3 class="level-title">R<span class="level-label" data-toggle="tooltip" data-placement="left" data-animation="true" title="You can use the tooltip to add more info...">Expert</span></h3>
-                                    <div class="level-bar">
-                                        <div class="level-bar-inner" data-level="85%">
-                                        </div>                                      
-                                    </div><!--//level-bar-->                                 
-                                </div><!--//item-->
-                                
-                                <div class="item">
-                                    <h3 class="level-title">Python<span class="level-label">Expert</span></h3>
-                                    <div class="level-bar">
-                                        <div class="level-bar-inner" data-level="70%">
-                                        </div>                                      
-                                    </div><!--//level-bar-->                                 
-                                </div><!--//item-->
-                                <div class="item">
-                                    <h3 class="level-title">Tableau<span class="level-label">Expert</span></h3>
-                                    <div class="level-bar">
-                                        <div class="level-bar-inner" data-level="90%">
-                                        </div>                                      
-                                    </div><!--//level-bar-->                                 
-                                </div><!--//item-->
-                                <div class="item">
-                                    <h3 class="level-title">HTML &amp; CSS <span class="level-label">Expert</span></h3>
-                                    <div class="level-bar">
-                                        <div class="level-bar-inner" data-level="80%">
-                                        </div>                                      
-                                    </div><!--//level-bar-->                                 
-                                </div><!--//item-->
-                                
-                                <div class="item">
-                                    <h3 class="level-title">JavaScript<span class="level-label">Pro</span></h3>
-                                    <div class="level-bar">
-                                        <div class="level-bar-inner" data-level="60%">
-                                        </div>                                      
-                                    </div><!--//level-bar-->                                 
-                                </div><!--//item-->
-                                
-                                <p><a class="more-link" href="#"><i class="fa fa-external-link"></i> More on Coderwall</a></p> 
-                            </div>              
-                        </div><!--//content-->  
-                    </div><!--//section-inner-->                 
-                </aside><!--//section-->
-                
-                <aside class="education aside section">
-                    <div class="section-inner">
-                        <h2 class="heading">Education</h2>
-                        <div class="content">
-                            <div class="item">                      
-                                <h3 class="title"><i class="fa fa-graduation-cap"></i> MSc Psychology and Computer Science</h3>
-                                <h4 class="university">University College London <span class="year">(2011-2012)</span></h4>
-                            </div><!--//item-->
-                            <div class="item">
-                                <h3 class="title"><i class="fa fa-graduation-cap"></i> BSc Computer Science</h3>
-                                <h4 class="university">University of Bristol <span class="year">(2008-2011)</span></h4>
-                            </div><!--//item-->
-                        </div><!--//content-->
-                    </div><!--//section-inner-->
-                </aside><!--//section-->
-                            
-                <aside class="languages aside section">
-                    <div class="section-inner">
-                        <h2 class="heading">Languages</h2>
-                        <div class="content">
-                            <ul class="list-unstyled">
-                                <li class="item">
-                                    <span class="title"><strong>English:</strong></span>
-                                    <span class="level">Native Speaker <br class="visible-xs"/><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </span>
-                                </li><!--//item-->
-                                <li class="item">
-                                    <span class="title"><strong>Spanish:</strong></span>
-                                    <span class="level">Professional Proficiency <br class="visible-sm visible-xs"/><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-half"></i></span>
-                                </li><!--//item-->
-                            </ul>
-                        </div><!--//content-->
-                    </div><!--//section-inner-->
-                </aside><!--//section-->
-                
-                <aside class="blog aside section">
-                    <div class="section-inner">
-                        <h2 class="heading">Latest Blog Posts</h2>
-                        <p>You can use Sascha Depold's <a href="https://github.com/sdepold/jquery-rss" target="_blank">jQuery RSS plugin</a> to pull in your blog post feeds.</p>
-                        <div id="rss-feeds" class="content">
-
-                        </div><!--//content-->
-                    </div><!--//section-inner-->
-                </aside><!--//section-->
-                               
-           
             </div><!--//secondary-->    
         </div><!--//row-->
     </div><!--//masonry-->
